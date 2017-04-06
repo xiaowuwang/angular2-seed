@@ -14,6 +14,8 @@ import { RepoListComponent } from './github/repo-list/repo-list.component';
 import { RepoDetailComponent } from './github/repo-detail/repo-detail.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { ContactComponent } from './contact/contact.component';
+import { ODataComponent } from './odata/odata.component';
+import { provideODataService } from "./odata/odata.serviceProvider";
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { ContactComponent } from './contact/contact.component';
     RepoListComponent,
     RepoDetailComponent,
     HomeComponent,
-    ContactComponent
+    ContactComponent,
+    ODataComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import { ContactComponent } from './contact/contact.component';
     RouterModule.forRoot(rootRouterConfig, { useHash: true })
   ],
   providers: [
-    GithubService
+    GithubService,
+    provideODataService("http://services.odata.org/V3/(S(pq1lpmgz0kuok05ubqtx1c2g))/OData/OData.svc/")
   ],
   bootstrap: [ AppComponent ]
 })
